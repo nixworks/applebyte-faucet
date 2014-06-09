@@ -15,7 +15,7 @@ include ('templates/header.php');
         <div class="row">
         <div class="span10">
 <?php
-if ($_SERVER['REMOTE_ADDR'] != "127.0.0.1") {
+if ($_SERVER['REMOTE_ADDR'] != $_SERVER['SERVER_ADDR']) {
     echo '<div class="alert-message error" data-alert="alert" style="margin-right: 20px;"><a class="close" onclick="\$().alert()" href="#">&times</a><p>Access Denied.</p></div>';
 } else {
     $finishing_divs = "</div></div>";
@@ -41,11 +41,11 @@ if ($_SERVER['REMOTE_ADDR'] != "127.0.0.1") {
             <table class=\'zebra-striped\'>
             <tr><td>Submitted This Round: </td><td>' . $rows2 . '</td></tr>
             <tr><td>Current Round: </td><td>' . $round . '</td></tr>
-            <tr><td>Payout This Round: </td><td>' . $roundltc . ' LTC</td></tr>
-            <tr><td>Total Payout: </td><td>' . $dailytotal . ' LTC</td></tr>
+            <tr><td>Payout This Round: </td><td>' . $roundltc . ' EMC2</td></tr>
+            <tr><td>Total Payout: </td><td>' . $dailytotal . ' EMC2</td></tr>
             <tr><td>Total Submitted: </td><td>' . $subrows . '</td></tr> 
             <tr><td>Donate: </td><td>' . $btclient->getbalance($don_faucet, 0) .
-        ' LTC</td></tr>
+        ' EMC2</td></tr>
         <tr><td>Donation address: </td><td>' . $btclient->getaccountaddress($don_faucet) .
         '</td></tr>  
             </table>';
@@ -55,22 +55,22 @@ if ($_SERVER['REMOTE_ADDR'] != "127.0.0.1") {
             <div style="margin-right: 20px;">
             <h3>Daily settings</h3>
             <table class=\'zebra-striped\'>
-    <form action="update/updateroundltc" method="post">
+    <form action="update/updateroundltc.php" method="post">
     <input type="hidden" name="ud_id" value="">
     Round Price: <input type="text" name="roundltc" value="">
     <input type="Submit" value="Update">
     </form></table>
-    <form action="update/updatetotal" method="post">
+    <form action="update/updatetotal.php" method="post">
     <input type="hidden" name="ud_id" value="">
     Total Paid Out: <input type="text" name="dailytotal" value="">
     <input type="Submit" value="Update">
     </form></table>
-    <form action="update/updateround" method="post">
+    <form action="update/updateround.php" method="post">
     <input type="hidden" name="ud_id" value="">
     Current Round: <input type="text" name="round" value="">
     <input type="Submit" value="Update">
     </form></table>
-    <form action="update/updateaddresses" method="post">
+    <form action="update/updateaddresses.php" method="post">
     <input type="hidden" name="ud_id" value="">
     Delete Round: <input type="Submit" value="Update">
     </form></table>

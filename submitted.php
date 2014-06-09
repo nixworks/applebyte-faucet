@@ -54,8 +54,8 @@ if (strtolower(ValidateCaptcha($adscaptchaID, $adsprivkey, $challengeValue, $res
             $command = "SELECT * FROM dailyltc";
             $q = mysql_query($command);
             $rows = mysql_num_rows($q);
-            $entries_needed = 150;
-            if ($rows > $entries_needed) {
+            $entries_needed = 1;
+            if ($rows >= $entries_needed) {
                 $command = "SELECT * FROM roundltc";
                 $q = mysql_query($command);
                 $res = mysql_fetch_array($q);

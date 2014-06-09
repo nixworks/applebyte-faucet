@@ -85,10 +85,8 @@
           <?
 // menu
  mnu_btn("index.php", "Daily");
-if ($_SERVER['REMOTE_ADDR'] == "127.0.0.1")
+if ($_SERVER['REMOTE_ADDR'] == $_SERVER['SERVER_ADDR'])
     mnu_btn("server.php", "Server");
-
-
 
 function mnu_btn($link, $title, $preg = false)
 {
