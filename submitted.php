@@ -33,16 +33,16 @@ function ordinal($a)
 }
 if (strtolower(ValidateCaptcha($adscaptchaID, $adsprivkey, $challengeValue, $responseValue,
     $remoteAddress)) == "true") {
-    $isvalid = $btclient->validateaddress($_POST['LTC']);
+    $isvalid = $btclient->validateaddress($_POST['EMC2']);
     if ($isvalid['isvalid'] != '1') {
 
-        echo "Invalid Address: {$_POST['LTC']}";
+        echo "Invalid Address: {$_POST['EMC2']}";
         echo "</center></div>";
         include ('templates/sidebar.php');
         include ('templates/footer.php');
         die();
     } else {
-    $ltcaddress = $_POST['LTC'];
+    $ltcaddress = $_POST['EMC2'];
             mysql_query("INSERT INTO dailyltc (ltcaddress, ip)
     SELECT * FROM (SELECT '$ltcaddress', '$ip') AS tmp
     WHERE NOT EXISTS (
@@ -61,10 +61,10 @@ if (strtolower(ValidateCaptcha($adscaptchaID, $adsprivkey, $challengeValue, $res
                 $res = mysql_fetch_array($q);
                 $list = mysql_query("SELECT * FROM dailyltc");
 
-                $coins_in_account = $btclient->getbalance("SendOut", 0);
+                $coins_in_account = $btclient->getbalance($don_faucet, 0);
                 if ($coins_in_account >= ($res['roundltc'] * $rows)) {
                     while ($listw = mysql_fetch_array($list)) {
-                        $btclient->sendfrom("SendOut", $listw['btcaddres'], $res['roundltc']);
+                        $btclient->sendfrom($don_faucet, $listw['ltcaddress'], $res['roundltc']);
                     }
                     $n = ordinal(mysql_num_rows($list));
                     echo srsnot("Congratulations, you were the {$n} in the round, the round has been reset and payouts have been sent.");
@@ -89,7 +89,7 @@ if (strtolower(ValidateCaptcha($adscaptchaID, $adsprivkey, $challengeValue, $res
 
             //echo "printed.";
             // echo "</table>";
-            echo "You will get your LTC at the end of this round<br />There are $rows submitted addresses in this round!<br>";
+            echo "You will get your EMC2 at the end of this round<br />There are $rows submitted addresses in this round!<br>";
             echo "<br>If you want to donate to the Faucet: $donaddress (recv: $don)";
         }
     

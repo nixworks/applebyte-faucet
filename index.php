@@ -22,8 +22,8 @@ You can only enter once per round, if we detect the same IP or a proxy, you\'ll 
 </style>
 <center><br>
 <form action="submitted.php" method="post">
-<td class="tdr"><font color="green">Your Litecoin Address Here:</font></td>
-<td><input type="text" name="LTC"></td>
+<td class="tdr"><font color="green">Your Einsteinium Address Here:</font></td>
+<td><input type="text" name="EMC2"></td>
 <?php
 echo GetCaptcha($adscaptchaID, $adspubkey);
 ?>

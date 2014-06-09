@@ -8,7 +8,7 @@ $btclogin = array("username" => "username", "password" => "pass",
 
 // DB Settings
 $sqlogin = array("host" => "localhost", "dbname" => "faucet", "username" =>
-    "root", "password" => "pass");
+    "root", "password" => ";ao,");
 
 // sending settings ..
 $minleft = 0.01; // minimum left on account
