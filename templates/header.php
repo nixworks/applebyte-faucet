@@ -101,7 +101,7 @@
 	    }
 	    ?>
           </ul>
-	  <div class="pull-right" style="color: #fff; padding-top: 11px; font-size: 11px;">Blockcount: <?=number_format($derp["blocks"]);?> - Difficulty: <? echo $derp['difficulty'];?> - version <?=$derp[version]?> with <?=$derp["connections"]?> p2p nodes</div>
+	  <div class="pull-right" style="color: #fff; padding-top: 11px; font-size: 11px;">Blockcount: <?=number_format($derp["blocks"]);?> - Difficulty: <? echo $derp['difficulty'];?> - version <?=$derp['version']?> with <?=$derp["connections"]?> p2p nodes</div>
 	</div>
       </div>
     </div>
