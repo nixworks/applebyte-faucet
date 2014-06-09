@@ -4,7 +4,7 @@ $don_faucet = "FaucetDonations";
 
 // RPC Settings
 $btclogin = array("username" => "username", "password" => "pass",
-    "host" => "localhost", "port" => "9332");
+    "host" => "localhost", "port" => "41879");
 
 // DB Settings
 $sqlogin = array("host" => "localhost", "dbname" => "faucet", "username" =>
