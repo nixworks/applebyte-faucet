@@ -81,7 +81,7 @@ include ('templates/header.php');
             <h3>Litecoind statistics</h3>
             <table class=\'zebra-striped\'>
             <tr><td>Server balance total: </td><td>' . $derp['balance'] .
-    ' LTC</td></tr>
+    ' EMC2</td></tr>
             <tr><td>Server connections: </td><td>' . $derp['connections'] .
     '</td></tr>
             <tr><td>Server version: </td><td>' . $derp['version'] . '</td></tr>
