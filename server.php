@@ -15,9 +15,6 @@ include ('templates/header.php');
 <div class="row">
   <div class="span10">
     <?php
-    if ($_SERVER['REMOTE_ADDR'] != $_SERVER['SERVER_ADDR']) {
-      echo '<div class="alert-message error" data-alert="alert" style="margin-right: 20px;"><a class="close" onclick="\$().alert()" href="#">&times</a><p>Access Denied.</p></div>';
-    } else {
       $finishing_divs = "</div></div>";
       $command = "SELECT * FROM roundltc,dailytotal,round";
       $q = mysql_query($command);
@@ -183,6 +180,4 @@ include ('templates/header.php');
 	<?
 	echo $finishing_divs;
 	include ('templates/servsidebar.php');
-	}
-
 	?>
