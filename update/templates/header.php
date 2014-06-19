@@ -16,10 +16,10 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link rel="stylesheet/less" type="text/css" href="lib/bootstrap.less">
-    <script src="js/less-1.1.5.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap-alerts.js" /></script>
-    <script src='js/jquery-1.6.4.js'></script>
+    <link rel="stylesheet/less" type="text/css" href="../../lib/bootstrap.less">
+    <script src="../../js/less-1.1.5.min.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap-alerts.js" type="text/javascript"/></script>
+    <script src='../../js/jquery-1.6.4.js' type="text/javascript"></script>
     <style type="text/css">
      /* Override some defaults */
      html, body {

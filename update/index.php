@@ -10,7 +10,7 @@ $uptime = explode(',', $uptime[1]);
 $uptime = $uptime[0] . ', ' . $uptime[1];
 
 include ("../core/wallet.php");
-include ('../templates/header.php');
+include ('templates/header.php');
 ?>
 <div class="row">
   <div class="span10">
@@ -179,5 +179,5 @@ include ('../templates/header.php');
 	?>
 	<?php
 	echo $finishing_divs;
-	include ('../templates/servsidebar.php');
+	include ('templates/servsidebar.php');
 	?>
