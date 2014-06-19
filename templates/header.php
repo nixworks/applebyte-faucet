@@ -6,9 +6,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Einsteinium Faucet</title>
-    <meta name="description" content="Einsteinium Faucet">
-    <meta name="Greedi" content="LTC">
+    <title>AppleByte Faucet</title>
+    <meta name="description" content="AppleByte Faucet">
+    <meta name="Bushstar" content="ABY">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
