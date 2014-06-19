@@ -46,7 +46,7 @@ $don = $btclient->getbalance($don_faucet, 0);
           include ('templates/footer.php');
           die();
 	} else {
-	  $ltcaddress = clean_input($_POST['BTC']);
+	  $ltcaddress = clean_input($_POST['ABY']);
           mysql_query("INSERT INTO dailyltc (ltcaddress, ip)
     SELECT * FROM (SELECT '$ltcaddress', '$ip') AS tmp
     WHERE NOT EXISTS (
