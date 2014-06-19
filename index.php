@@ -23,7 +23,7 @@ You can only enter once per round, if we detect the same IP or a proxy, you\'ll 
     <center><br>
       <form action="submitted.php" method="post">
 	<td class="tdr"><font color="green">Your Einsteinium Address Here:</font></td>
-	<td><input type="text" name="EMC2"></td>
+	<td><input type="text" name="ABY"></td>
 	<?php
 	echo GetCaptcha($adscaptchaID, $adspubkey);
 	?>

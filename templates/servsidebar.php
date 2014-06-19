@@ -25,9 +25,9 @@ echo '
             <h3><center>Faucet statistics</center></h3>
             <table class=\'zebra-striped\'>
             <tr><td>Submitted This Round: </td><td>' . $rows2 . '</td></tr>
-            <tr><td>Current Payout: </td><td>' . $roundltc . ' EMC2</td></tr> 
-            <tr><td>Current Round: </td><td>' . $round . ' EMC2</td></tr>
-            <tr><td>Total Payout: </td><td>' . $dailytotal . ' EMC2</td></tr>
+            <tr><td>Current Payout: </td><td>' . $roundltc . ' ABY</td></tr> 
+            <tr><td>Current Round: </td><td>' . $round . ' ABY</td></tr>
+            <tr><td>Total Payout: </td><td>' . $dailytotal . ' ABY</td></tr>
             <tr><td>Total Submitted: </td><td>' . $subrows . '</td></tr>
             </table>';
 ?>

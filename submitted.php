@@ -32,15 +32,15 @@ $don = $btclient->getbalance($don_faucet, 0);
 	return $a . $e;
       }
       if (strtolower(ValidateCaptcha($adscaptchaID, $adsprivkey, $challengeValue, $responseValue, $remoteAddress)) == "true") {
-	$isvalid = $btclient->validateaddress($_POST['EMC2']);
+	$isvalid = $btclient->validateaddress($_POST['ABY']);
 	if ($isvalid['isvalid'] != '1') {
-          echo "Invalid Address: {$_POST['EMC2']}";
+          echo "Invalid Address: {$_POST['ABY']}";
           echo "</center></div>";
           include ('templates/sidebar.php');
           include ('templates/footer.php');
           die();
 	} else {
-	  $ltcaddress = $_POST['EMC2'];
+	  $ltcaddress = $_POST['ABY'];
           mysql_query("INSERT INTO dailyltc (ltcaddress, ip)
     SELECT * FROM (SELECT '$ltcaddress', '$ip') AS tmp
     WHERE NOT EXISTS (
@@ -85,7 +85,7 @@ $don = $btclient->getbalance($don_faucet, 0);
 
           //echo "printed.";
           // echo "</table>";
-          echo "You will get your EMC2 at the end of this round<br />There are $rows submitted addresses in this round!<br>";
+          echo "You will get your ABY at the end of this round<br />There are $rows submitted addresses in this round!<br>";
           echo "<br>If you want to donate to the Faucet: $donaddress (recv: $don)";
         }
       } else { // Wrong answer, you may display a new AdsCaptcha and add an error message

@@ -41,11 +41,11 @@ include ('templates/header.php');
             <table class=\'zebra-striped\'>
             <tr><td>Submitted This Round: </td><td>' . $rows2 . '</td></tr>
             <tr><td>Current Round: </td><td>' . $round . '</td></tr>
-            <tr><td>Payout This Round: </td><td>' . $roundltc . ' EMC2</td></tr>
-            <tr><td>Total Payout: </td><td>' . $dailytotal . ' EMC2</td></tr>
+            <tr><td>Payout This Round: </td><td>' . $roundltc . ' ABY</td></tr>
+            <tr><td>Total Payout: </td><td>' . $dailytotal . ' ABY</td></tr>
             <tr><td>Total Submitted: </td><td>' . $subrows . '</td></tr> 
             <tr><td>Donate: </td><td>' . $btclient->getbalance($don_faucet, 0) .
-    ' EMC2</td></tr>
+    ' ABY</td></tr>
         <tr><td>Donation address: </td><td>' . $btclient->getaccountaddress($don_faucet) .
     '</td></tr>  
             </table>';
@@ -81,7 +81,7 @@ include ('templates/header.php');
             <h3>Litecoind statistics</h3>
             <table class=\'zebra-striped\'>
             <tr><td>Server balance total: </td><td>' . $derp['balance'] .
-    ' EMC2</td></tr>
+    ' ABY</td></tr>
             <tr><td>Server connections: </td><td>' . $derp['connections'] .
     '</td></tr>
             <tr><td>Server version: </td><td>' . $derp['version'] . '</td></tr>
