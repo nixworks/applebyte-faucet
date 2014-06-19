@@ -10,7 +10,7 @@ $dailytotal = $_POST['delete'];
 mysql_query("DELETE FROM dailyltc") 
 or die(mysql_error());
 
-header( 'Location: ../server.php' ) ;  
+header( 'Location: index.php' ) ;  
 ?>
 
 

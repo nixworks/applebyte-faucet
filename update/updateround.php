@@ -10,7 +10,7 @@ $round = $_POST['round'];
 $result = mysql_query("UPDATE round SET round = $round") 
 or die(mysql_error());
 
-header( 'Location: ../server.php' ) ;  
+header( 'Location: index.php' ) ;  
 ?>
 
 

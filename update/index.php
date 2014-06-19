@@ -9,8 +9,8 @@ $uptime = explode(' up ', $data);
 $uptime = explode(',', $uptime[1]);
 $uptime = $uptime[0] . ', ' . $uptime[1];
 
-include ("core/wallet.php");
-include ('templates/header.php');
+include ("../core/wallet.php");
+include ('../templates/header.php');
 ?>
 <div class="row">
   <div class="span10">
@@ -52,22 +52,22 @@ include ('templates/header.php');
     <div style="margin-right: 20px;">
       <h3>Daily settings</h3>
       <table class=\'zebra-striped\'>
-	<form action="update/updateroundltc.php" method="post">
+	<form action="updateroundltc.php" method="post">
 	  <input type="hidden" name="ud_id" value="">
 	  Round Price: <input type="text" name="roundltc" value="">
 	  <input type="Submit" value="Update">
 	</form></table>
-      <form action="update/updatetotal.php" method="post">
+      <form action="updatetotal.php" method="post">
 	<input type="hidden" name="ud_id" value="">
 	Total Paid Out: <input type="text" name="dailytotal" value="">
 	<input type="Submit" value="Update">
       </form></table>
-	    <form action="update/updateround.php" method="post">
+	    <form action="updateround.php" method="post">
 	      <input type="hidden" name="ud_id" value="">
 	      Current Round: <input type="text" name="round" value="">
 	      <input type="Submit" value="Update">
 	    </form></table>
-	    <form action="update/updateaddresses.php" method="post">
+	    <form action="updateaddresses.php" method="post">
 	      <input type="hidden" name="ud_id" value="">
 	      Delete Round: <input type="Submit" value="Update">
 	    </form></table>
@@ -179,5 +179,5 @@ include ('templates/header.php');
 	?>
 	<?
 	echo $finishing_divs;
-	include ('templates/servsidebar.php');
+	include ('../templates/servsidebar.php');
 	?>

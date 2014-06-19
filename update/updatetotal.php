@@ -10,7 +10,7 @@ $dailytotal = $_POST['dailytotal'];
     mysql_query("UPDATE dailytotal SET dailytotal = $dailytotal") 
     or die(mysql_error());
     
-  header( 'Location: ../server.php' ) ; 
+  header( 'Location: index.php' ) ; 
 ?>
 
 

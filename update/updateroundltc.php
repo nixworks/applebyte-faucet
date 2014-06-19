@@ -9,7 +9,7 @@ $roundltc = $_POST['roundltc'];
 $result = mysql_query("UPDATE roundltc SET roundltc = $roundltc") 
 or die(mysql_error());
 
-header( 'Location: ../server.php' );
+header( 'Location: index.php' );
 ?>
 
 
