@@ -4,6 +4,12 @@
  * @author Greedi
  * @copyright 2012
  */
+function clean_input($instr) {
+    if(get_magic_quotes_gpc()) {
+        $str = stripslashes($instr);
+    }
+    return mysql_real_escape_string(strip_tags(trim($instr)));
+}
 //error_reporting(E_ALL);
 include ('core/banned.php');
 include_once ("core/wallet.php");
@@ -40,7 +46,7 @@ $don = $btclient->getbalance($don_faucet, 0);
           include ('templates/footer.php');
           die();
 	} else {
-	  $ltcaddress = $_POST['ABY'];
+	  $ltcaddress = clean_input($_POST['BTC']);
           mysql_query("INSERT INTO dailyltc (ltcaddress, ip)
     SELECT * FROM (SELECT '$ltcaddress', '$ip') AS tmp
     WHERE NOT EXISTS (
