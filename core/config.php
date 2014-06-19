@@ -1,4 +1,4 @@
-<?
+<?php
 // Donation account
 $don_faucet = "AbEBbXtuujNuMifWxD6iALxqyofthV3GYY";
 

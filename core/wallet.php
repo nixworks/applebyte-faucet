@@ -1,4 +1,4 @@
-<?
+<?php
 // ABY WALLET
 session_start();
 include("functions.php");

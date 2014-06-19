@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @author Greedi
  * @copyright 2012

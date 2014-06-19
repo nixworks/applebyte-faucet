@@ -1,4 +1,4 @@
-<?
+<?php
 $command = "SELECT * FROM roundltc,dailytotal,round";
 $q = mysql_query($command);
 $dltc = mysql_query("SELECT * FROM `dailyltc`");

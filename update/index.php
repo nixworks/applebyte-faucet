@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * @author Greedi
@@ -41,9 +41,9 @@ include ('../templates/header.php');
             <tr><td>Payout This Round: </td><td>' . $roundltc . ' ABY</td></tr>
             <tr><td>Total Payout: </td><td>' . $dailytotal . ' ABY</td></tr>
             <tr><td>Total Submitted: </td><td>' . $subrows . '</td></tr> 
-            <tr><td>Donate: </td><td>' . $btclient->getbalance($don_faucet, 0) .
+            <tr><td>Donate: </td><td>' . $btclient->getbalance() .
     ' ABY</td></tr>
-        <tr><td>Donation address: </td><td>' . $btclient->getaccountaddress($don_faucet) .
+        <tr><td>Donation address: </td><td>' . $don_faucet .
     '</td></tr>  
             </table>';
     $i++;
@@ -72,7 +72,7 @@ include ('../templates/header.php');
 	      Delete Round: <input type="Submit" value="Update">
 	    </form></table>
     </div>
-    <?
+    <?php
     echo '
             <div style="margin-right: 20px;">
             <h3>Litecoind statistics</h3>
@@ -153,7 +153,7 @@ include ('../templates/header.php');
 	<th><font face="Arial, Helvetica, sans-serif"><center>IP</center></font></th>
       </tr>
 
-      <?
+      <?php
       $i = 0;
       while ($i < $rows2) {
         $qltc = "SELECT * FROM dailyltc";
@@ -165,19 +165,19 @@ include ('../templates/header.php');
       ?>
 
 	<tr>
-	  <td><font face="Arial, Helvetica, sans-serif"><? echo $id; ?></font></td>
-	  <td><font face="Arial, Helvetica, sans-serif"><center><? echo $ltcaddres; ?></center></font></td>
-	  <td><font face="Arial, Helvetica, sans-serif"><center><? echo $ip; ?></center></font></td>
+	  <td><font face="Arial, Helvetica, sans-serif"><?php echo $id; ?></font></td>
+	  <td><font face="Arial, Helvetica, sans-serif"><center><?php echo $ltcaddres; ?></center></font></td>
+	  <td><font face="Arial, Helvetica, sans-serif"><center><?php echo $ip; ?></center></font></td>
 	</tr>
 
-	<?
+	<?php
         $i++;
 	}
 
 	echo "</table>";
 
 	?>
-	<?
+	<?php
 	echo $finishing_divs;
 	include ('../templates/servsidebar.php');
 	?>

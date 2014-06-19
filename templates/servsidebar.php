@@ -1,14 +1,14 @@
-<?
+<?php
 /**
  * @author Greedi
  * @copyright 2012
  */
 
-include ('core/daily.php');
+include ('../core/daily.php');
 ?>
 <div class="span4"> <!-- This is the servsidebar, don't forget -_- -->
 
-  <?
+  <?php
   echo '
             <div style="margin-right: 20px;">
             <h3><center>AppleByte statistics</center></h3>
@@ -19,7 +19,7 @@ include ('core/daily.php');
             </table>';
   ?>
 </div>
-<?
+<?php
 echo '
             <div style="margin-right: 10px;">
             <h3><center>Faucet statistics</center></h3>
