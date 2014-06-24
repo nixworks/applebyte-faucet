@@ -6,8 +6,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>AppleByte Faucet</title>
-    <meta name="description" content="AppleByte Faucet">
+    <title>AppleByte Orchard</title>
+    <meta name="description" content="AppleByte Orchard">
     <meta name="Bushstar" content="ABY">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -38,7 +38,6 @@
      /* The white background content wrapper */
      .container > .content {
        background-color: #fff;
-       padding: 20px;
        margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
        -webkit-border-radius: 0 0 6px 6px;
        -moz-border-radius: 0 0 6px 6px;
@@ -63,7 +62,6 @@
      /* Give a quick and non-cross-browser friendly divider */
      .content .span4 {
        margin-left: 0;
-       padding-left: 19px;
        border-left: 1px solid #eee;
      }
 
@@ -80,7 +78,7 @@
     <div class="topbar">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="/"><font style="font-size: 20px;">Faucet</font><font style="font-size: 9px; "></font> </a>
+          <a class="brand" href="/"><font style="font-size: 20px;">Orchard</font><font style="font-size: 9px; "></font> </a>
           <ul class="nav">
             <?php
 	    // menu

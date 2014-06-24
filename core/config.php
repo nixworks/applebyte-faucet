@@ -13,8 +13,9 @@ $sqlogin = array("host" => "localhost", "dbname" => "faucet", "username" =>
 // sending settings ..
 $minleft = 0.01; // minimum left on account
 $minsend = 0.5; // minimum allowed to send at a time
+$payout = 1; // Amount to pay out
 
-$adscaptchaID = 3170;
-$adspubkey = "d655966c-541e-44c8-9a7d-a4f48a3d51a3";
-$adsprivkey = "484fa3ac-8fcb-470f-8ee4-a3a91568071c";
+$adscaptchaID = 6480;
+$adspubkey = "55e8b1f7320642159660a38b9774159f";
+$adsprivkey = "ca2e7dcf116b48b68fbf73c2610abe4d";
 ?>

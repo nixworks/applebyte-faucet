@@ -9,7 +9,7 @@ $uptime = explode(' up ', $data);
 $uptime = explode(',', $uptime[1]);
 $uptime = $uptime[0] . ', ' . $uptime[1];
 
-include ("../core/wallet.php");
+include ('../core/wallet.php');
 include ('templates/header.php');
 ?>
 <div class="row">
@@ -75,7 +75,7 @@ include ('templates/header.php');
     <?php
     echo '
             <div style="margin-right: 20px;">
-            <h3>Litecoind statistics</h3>
+            <h3>AppleByted statistics</h3>
             <table class=\'zebra-striped\'>
             <tr><td>Server balance total: </td><td>' . $derp['balance'] .
     ' ABY</td></tr>
@@ -149,7 +149,7 @@ include ('templates/header.php');
     <center><table border="0" cellspacing="2" cellpadding="2">
       <tr>
 	<th><font face="Arial, Helvetica, sans-serif">ID</font></th>
-	<th><font face="Arial, Helvetica, sans-serif"><center>ltcaddres</center></font></th>
+	<th><font face="Arial, Helvetica, sans-serif"><center>abyaddress</center></font></th>
 	<th><font face="Arial, Helvetica, sans-serif"><center>IP</center></font></th>
       </tr>
 

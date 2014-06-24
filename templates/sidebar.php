@@ -1,22 +1,7 @@
-<div class="span4"> <!-- This is the sidebar, don't forget -_- -->
-  <?php
-  include ('../core/daily.php');
-  echo '
-            <div style="margin-right: 10px;">
-            <h3><center>Faucet statistics</center></h3>
-            <table class=\'zebra-striped\'>
-            <tr><td>Submitted This Round: </td><td>' . $rows2 . '</td></tr>
-            <tr><td>Current Payout: </td><td>' . $roundltc . ' ABY</td></tr> 
-            <tr><td>Current Round: </td><td>' . $round . ' ABY</td></tr>
-            <tr><td>Total Payout: </td><td>' . $dailytotal . ' ABY</td></tr>
-            </table>';
-  ?>
-
+<div style="margin-top:50px;" class="span4"> <!-- This is the sidebar, don't forget -_- -->
   <center>
-    <p>Put your own stuff here.</p>
 
-    <br>
-</a>
+<img src="../templates/aby.png" />
 
   </center></div>
 

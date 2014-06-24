@@ -16,8 +16,8 @@ include_once ("core/wallet.php");
 include_once ('templates/header.php');
 //include ('core/dnsbl.php');
 
-$donaddress = $btclient->getaccountaddress($don_faucet);
-$don = $btclient->getbalance($don_faucet, 0);
+$donaddress = $don_faucet;
+$don = $btclient->getbalance();
 
 ?>
 <div class="row">
@@ -40,62 +40,44 @@ $don = $btclient->getbalance($don_faucet, 0);
       if (strtolower(ValidateCaptcha($adscaptchaID, $adsprivkey, $challengeValue, $responseValue, $remoteAddress)) == "true") {
 	$isvalid = $btclient->validateaddress($_POST['ABY']);
 	if ($isvalid['isvalid'] != '1') {
-          echo "Invalid Address: {$_POST['ABY']}";
-          echo "</center></div>";
-          include ('templates/sidebar.php');
-          include ('templates/footer.php');
-          die();
+            echo srserr("Invalid Address: " . $_POST['ABY'] . " <a href='/index.php'>Go back</a>");
+            echo "</center></div>";
+            include ('templates/sidebar.php');
+            include ('templates/footer.php');
+            die();
 	} else {
-	  $ltcaddress = clean_input($_POST['ABY']);
-          mysql_query("INSERT INTO dailyltc (ltcaddress, ip)
-    SELECT * FROM (SELECT '$ltcaddress', '$ip') AS tmp
-    WHERE NOT EXISTS (
-    SELECT ip FROM dailyltc WHERE ip = '$ip'
-    ) LIMIT 1;") or die(mysql_error());
-          mysql_query("INSERT INTO subtotal (ltcaddress, ip) VALUES('$ltcaddress', '$ip' ) ") or
-          die(mysql_error());
-          $command = "SELECT * FROM dailyltc";
-          $q = mysql_query($command);
-          $rows = mysql_num_rows($q);
-          $entries_needed = 1;
-          if ($rows >= $entries_needed) {
-            $command = "SELECT * FROM roundltc";
-            $q = mysql_query($command);
-            $res = mysql_fetch_array($q);
-            $list = mysql_query("SELECT * FROM dailyltc");
-            $coins_in_account = $btclient->getbalance($don_faucet, 0);
-            if ($coins_in_account >= ($res['roundltc'] * $rows)) {
-              while ($listw = mysql_fetch_array($list)) {
-                $btclient->sendfrom($don_faucet, $listw['ltcaddress'], $res['roundltc']);
-              }
-              $n = ordinal(mysql_num_rows($list));
-              echo srsnot("Congratulations, you were the {$n} in the round, the round has been reset and payouts have been sent.");
-              mysql_query("TRUNCATE dailyltc");
-              mysql_query("UPDATE round set round=round+1");
-              $totalc = $res['roundltc'] * $rows;
-              mysql_query("UPDATE dailytotal set total=total+{$totalc}");
-              echo "</center></div>";
-              include ('templates/sidebar.php');
-              include ('templates/footer.php');
-              die();
-            } else {
-              echo srserr("Uh oh, looks like we haven't got enough donations to pay out. The round will continue until there's enough to pay out.");
-              echo "</center></div>";
-              include ('templates/sidebar.php');
-              include ('templates/footer.php');
-              die();
-            }
-          }
-
-          //echo "printan.";
-
-          //echo "printed.";
-          // echo "</table>";
-          echo "You will get your ABY at the end of this round<br />There are $rows submitted addresses in this round!<br>";
-          echo "<br>If you want to donate to the Faucet: $donaddress (recv: $don)";
+	    $ltcaddress = clean_input($_POST['ABY']);
+	    $command = "SELECT 1 FROM dailyltc WHERE ltcaddress='$ltcaddress' OR ip='$ip'";
+	    $q = mysql_query($command);
+	    $rows = mysql_num_rows($q);
+	    if ($rows > 0) {
+		echo srserr("There is already an entry for you in this 24 hour round, please come back tomorrow.");
+                echo "</center></div>";
+                include ('templates/sidebar.php');
+                include ('templates/footer.php');
+		die();
+	    }
+            mysql_query("INSERT INTO dailyltc (ltcaddress, ip) SELECT * FROM (SELECT '$ltcaddress', '$ip') AS tmp
+                WHERE NOT EXISTS (SELECT ip FROM dailyltc WHERE ip = '$ip') LIMIT 1;") or die(mysql_error());
+            mysql_query("INSERT INTO subtotal (ltcaddress, ip) VALUES('$ltcaddress', '$ip' ) ") or die(mysql_error());
+	    $coins_in_account = $btclient->getbalance();
+       	    if ($coins_in_account > $payout) {
+	        $btclient->sendtoaddress($ltcaddress,$payout);
+		echo srsnot("Congratulations, you have now been sent " . $payout . " ABY. Come back tomorrow for the next round.");
+		echo "</center></div>";
+                include ('templates/sidebar.php');
+                include ('templates/footer.php');
+		die(); 
+	    } else {
+	        echo srserr("Looks like we haven't got enough donations to pay out. The faucet will continue once the faucet has received more funds.");
+                echo "</center></div>";
+                include ('templates/sidebar.php');
+                include ('templates/footer.php');
+                die();
+	    }
         }
       } else { // Wrong answer, you may display a new AdsCaptcha and add an error message
-	echo srserr("INVALID CAPTCHA. <a href='/index.php'>Go back</a>");
+	echo srserr("Invalid CAPTCHA. <a href='/index.php'>Go back</a>");
       }
       ?>
     </center>

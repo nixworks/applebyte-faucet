@@ -4,7 +4,7 @@
  * @copyright 2012
  */
 
-include ('../core/daily.php');
+include ('core/daily.php');
 ?>
 <div class="span4"> <!-- This is the servsidebar, don't forget -_- -->
 
@@ -22,7 +22,7 @@ include ('../core/daily.php');
 <?php
 echo '
             <div style="margin-right: 10px;">
-            <h3><center>Faucet statistics</center></h3>
+            <h3><center>Orchard statistics</center></h3>
             <table class=\'zebra-striped\'>
             <tr><td>Submitted This Round: </td><td>' . $rows2 . '</td></tr>
             <tr><td>Current Payout: </td><td>' . $roundltc . ' ABY</td></tr> 
