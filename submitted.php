@@ -57,7 +57,8 @@ $don = $btclient->getbalance();
                 include ('templates/footer.php');
 		die();
 	    }
-            mysql_query("INSERT INTO dailyltc (ltcaddress, ip) SELECT * FROM (SELECT '$ltcaddress', '$ip') AS tmp
+            $time = time();
+            mysql_query("INSERT INTO dailyltc (ltcaddress, ip, time) SELECT * FROM (SELECT '$ltcaddress', '$ip', '$time') AS tmp
                 WHERE NOT EXISTS (SELECT ip FROM dailyltc WHERE ip = '$ip') LIMIT 1;") or die(mysql_error());
             mysql_query("INSERT INTO subtotal (ltcaddress, ip) VALUES('$ltcaddress', '$ip' ) ") or die(mysql_error());
 	    $coins_in_account = $btclient->getbalance();
