@@ -57,6 +57,24 @@ $don = $btclient->getbalance();
                 include ('templates/footer.php');
 		die();
 	    }
+        // Compare first three octets of local IP with IPs from last hour
+        $command = "SELECT `ip` FROM dailyltc WHERE `time` > UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR);";
+        $q = mysql_query($command);
+        $ipArray = explode(".", $ip, 4);
+        array_pop($ipArray);
+        if ($q) {
+            while($row = mysql_fetch_array($q)) {
+                $exArray = explode(".", $row[0], 4);
+                array_pop($exArray);
+                if ($ipArray == $exArray) {
+                    echo srserr("An entry from this subnet was received within the last hour. Please try after an hour has passed.");
+                    echo "</center></div>";
+                    include ('templates/sidebar.php');
+                    include ('templates/footer.php');
+                    die();
+                }
+            }
+        }
             $time = time();
             mysql_query("INSERT INTO dailyltc (ltcaddress, ip, time) SELECT * FROM (SELECT '$ltcaddress', '$ip', '$time') AS tmp
                 WHERE NOT EXISTS (SELECT ip FROM dailyltc WHERE ip = '$ip') LIMIT 1;") or die(mysql_error());
