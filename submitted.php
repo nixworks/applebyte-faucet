@@ -57,25 +57,70 @@ $don = $btclient->getbalance();
                 include ('templates/footer.php');
 		die();
 	    }
-        // Compare first three octets of local IP with IPs from last hour
-        $command = "SELECT `ip` FROM dailyltc WHERE `time` > UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR);";
-        $q = mysql_query($command);
-        $ipArray = explode(".", $ip, 4);
-        array_pop($ipArray);
-        if ($q) {
-            while($row = mysql_fetch_array($q)) {
-                $exArray = explode(".", $row[0], 4);
-                array_pop($exArray);
-                if ($ipArray == $exArray) {
-                    echo srserr("An entry from this subnet was received within the last hour. Please try after an hour has passed.");
+	    // Compare first three octets of local IP with IPs from last hour
+	    $command = "SELECT `ip` FROM dailyltc WHERE `time` > UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR);";
+	    $q = mysql_query($command);
+	    $ipArray = explode(".", $ip, 4);
+	    array_pop($ipArray);
+	    if ($q) {
+	        while($row = mysql_fetch_array($q)) {
+		    $exArray = explode(".", $row[0], 4);
+		    array_pop($exArray);
+		    if ($ipArray == $exArray) {
+			echo srserr("An entry from this subnet was received within the last hour. Please try after an hour has passed.");
+                        echo "</center></div>";
+                        include ('templates/sidebar.php');
+                        include ('templates/footer.php');
+                        die();
+		    }
+		}
+	    }
+
+            function octetCompare($remote, $lowLimit, $highLimit) {
+                $remoteArray = explode(".", $remote, 4);
+                $lowArray = explode(".", $lowLimit, 4);
+                $highArray = explode(".", $highLimit, 4);
+                return rCompare($remoteArray, $lowArray, $highArray);
+            }
+
+            function rCompare($remote, $low, $high) {
+		if (($remote[0] > $low[0]) && ($remote[0] < $high[0])) {
+                    return true;
+                }
+		if (($remote[0] == $low[0]) && ($remote[0] < $high[0])) {
+                    for ($i = 1; $i < count($high); $i++) {
+			$high[$i] = 255;
+		    }
+                }
+		if (($remote[0] > $low[0]) && ($remote[0] == $high[0])) {
+                    for ($i = 1; $i < count($low); $i++) {
+                        $low[$i] = 0;
+                    }
+                }
+                if (($remote[0] == $low[0]) || ($remote[0] == $high[0])) {
+                    if (count($remote) == 1) {
+                        return true;
+                    } else {
+                        array_shift($remote);
+                        array_shift($low);
+                        array_shift($high);
+                        return rCompare($remote, $low, $high);
+                    }
+                }
+                return false;
+            }
+            
+            for ($i = 0; $i < count($bannedIPs); $i++) {
+                if (octetCompare($ip, $bannedIPs[$i][0], $bannedIPs[$i][1])) {
+                    echo srserr("Your subnet is banned from using this faucet.");
                     echo "</center></div>";
                     include ('templates/sidebar.php');
                     include ('templates/footer.php');
                     die();
                 }
             }
-        }
-            $time = time();
+
+	    $time = time();
             mysql_query("INSERT INTO dailyltc (ltcaddress, ip, time) SELECT * FROM (SELECT '$ltcaddress', '$ip', '$time') AS tmp
                 WHERE NOT EXISTS (SELECT ip FROM dailyltc WHERE ip = '$ip') LIMIT 1;") or die(mysql_error());
             mysql_query("INSERT INTO subtotal (ltcaddress, ip) VALUES('$ltcaddress', '$ip' ) ") or die(mysql_error());
